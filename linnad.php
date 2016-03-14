@@ -6,14 +6,15 @@
 </head>
 <body>
 <div id="home">
-    <p>Lisa autoregistri andmed andmebaasi:</p>
+    <a href="index.php">tagasi</a>
+    <p>Lisa linnade tabelisse andmed:</p>
 
     <form action="add2.php" method="post">
-        <p>Mark:</p>
-        <input placeholder="Audi" class="lisama" name="mark" type="text">
+        <p>Linn:</p>
+        <input placeholder="Tartu" class="lisama" name="mark" type="text">
 
-        <p>RegistriNR:</p>
-        <input placeholder="12345" class="lisama" name="RegNR" type="text">
+        <p>Rahvaarv:</p>
+        <input placeholder="50000" class="lisama" name="RegNR" type="text">
         <br>
         <button style="margin-top: 10px;" class="submit" id="submit">Sisesta</button>
     </form>
@@ -32,7 +33,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "select * from AUTO;";
+$sql = "select * from LINNAD;";
 
 $result = $conn->query($sql);
 
@@ -41,19 +42,15 @@ echo "
 <table class='tabl'>
 <tr>
 <th>id</th>
-<th>mark</th>
-<th>regnr</th>
-<th>aasta</th>
-<th>kuupäev</th>
+<th>nimi</th>
+<th>rahvaarv</th>
 </tr>";
 // output data of each row
 while ($row = $result->fetch_assoc()) {
     echo "<tr>
-                <td>" . $row["auto_id"] . " </td>
-                <td>" . $row["mark"] . " </td>
-                <td> " . $row["RegNR"] . "</td>
-                <td> " . $row["aasta"] . " </td>
-                <td> " . $row["L_O_kuup"] . "</td>
+                <td>" . $row["LinnID"] . " </td>
+                <td>" . $row["Nimi"] . " </td>
+                <td> " . $row["Rahvaarv"] . "</td>
                 </tr>";
 }
 

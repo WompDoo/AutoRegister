@@ -6,6 +6,7 @@
 </head>
 <body>
 <div id="pealeht">
+    <a href="index.php">tagasi</a>
     <p>Lisa autoregistri andmed andmebaasi:</p>
 
     <form action="add.php" method="post">
